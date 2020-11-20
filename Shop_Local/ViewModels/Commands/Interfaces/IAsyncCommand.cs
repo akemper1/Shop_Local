@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Shop_Local.ViewModels.Commands.Interfaces
 {
-    public interface IAsyncCommand
+    public interface IAsyncCommand : ICommand
     {
         Task ExecuteAsync();
 
