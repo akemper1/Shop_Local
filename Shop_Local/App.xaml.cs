@@ -5,15 +5,14 @@ using Shop_Local.Views;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Shop_Local
 {
     public partial class App
     {
-        public App(IPlatformInitializer initializer)
-            : base(initializer)
-        {
-        }
+        public App(IPlatformInitializer initializer) : base(initializer) { }
 
         protected override async void OnInitialized()
         {
