@@ -17,15 +17,21 @@ namespace Shop_Local
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync(nameof(MainPage));
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
+            #region Navigation
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<RecommendationPage, RecommendationViewModel>();
+            containerRegistry.RegisterForNavigation<ShopsPage, ShopsViewModel>();
+
+            #endregion
         }
     }
 }
