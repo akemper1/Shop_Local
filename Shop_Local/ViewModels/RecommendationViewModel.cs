@@ -50,7 +50,11 @@ namespace Shop_Local.ViewModels
 
         private async void OnSelected(object sender, EventArgs e)
         {
-            
+            // Only do things if the tab is active.
+            if (IsActive)
+            {
+                
+            }
         }
 
         #endregion
