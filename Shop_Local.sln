@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Local", "Shop_Local\Shop_Local.csproj", "{F1BD5E9F-A58B-4C6F-A126-AEC99E5CF728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop_Local", "Shop_Local\Shop_Local.csproj", "{F1BD5E9F-A58B-4C6F-A126-AEC99E5CF728}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Local.Android", "Shop_Local.Android\Shop_Local.Android.csproj", "{F7B85591-52E6-4FCB-8C8D-5EA201C16EC9}"
 EndProject

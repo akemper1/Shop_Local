@@ -48,7 +48,7 @@ namespace Shop_Local.ViewModels
             IsActiveChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private async void OnSelected(object sender, EventArgs e)
+        private void OnSelected(object sender, EventArgs e)
         {
             // Only do things if the tab is active.
             if (IsActive)
