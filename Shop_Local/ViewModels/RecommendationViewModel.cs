@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Navigation;
+using Shop_Local.Validation;
 using System;
 using System.Text.RegularExpressions;
 
@@ -18,12 +19,13 @@ namespace Shop_Local.ViewModels
             set
             {
                 SetProperty(ref _businessName, value);
+                IsBusinessNameNotValid = InvalidateText(value, new Regex(RegularExpressions.BusinessName));
             }
         }
         private string _businessName;
 
-        public bool IsBusinessNameValid { get => _isBusinessNameValid; set => SetProperty(ref _isBusinessNameValid, value); }
-        private bool _isBusinessNameValid;
+        public bool IsBusinessNameNotValid { get => _isBusinessNameNotValid; set => SetProperty(ref _isBusinessNameNotValid, value); }
+        private bool _isBusinessNameNotValid;
 
         #endregion
 

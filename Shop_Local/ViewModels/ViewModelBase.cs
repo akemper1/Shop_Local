@@ -59,9 +59,9 @@ namespace Shop_Local.ViewModels
 
         #region Methods
 
-        protected bool ValidateEntry(string value, Regex regex)
+        protected bool InvalidateText(string value, Regex regex)
         {
-            return regex.IsMatch(value ?? string.Empty);
+            return !regex.IsMatch(value ?? string.Empty);
         }
 
         #endregion

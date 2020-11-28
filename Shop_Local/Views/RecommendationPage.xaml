@@ -13,10 +13,13 @@
                 Hint="Business Name" 
                 HelperText="Enter business name"
                 ErrorText="Business name can not contain special characters."
-                HasError="false"
+                HasError="{Binding IsBusinessNameValid}"
                 ContainerType="Outlined"
                 OutlineCornerRadius="8" 
                 ReserveSpaceForAssistiveLabels="True">
+                <Entry Text="{Binding BusinessName}"/>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout Hint="Name" >
                 <Entry />
             </inputLayout:SfTextInputLayout>
         </StackLayout>
