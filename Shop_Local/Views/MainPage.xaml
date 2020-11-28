@@ -6,13 +6,13 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:Class="Shop_Local.Views.MainPage">
 
-    <NavigationPage Title="Find a Local Shop!">
+    <NavigationPage Title="Find!">
         <x:Arguments>
             <views:ShopsPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Recommend a Shop!">
+    <NavigationPage Title="Recommend!">
         <x:Arguments>
             <views:RecommendationPage />
         </x:Arguments>

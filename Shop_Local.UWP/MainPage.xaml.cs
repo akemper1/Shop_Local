@@ -1,4 +1,4 @@
-﻿using Prism;
+using Prism;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;

@@ -2,6 +2,7 @@
 using Prism.Navigation;
 using System;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace Shop_Local.ViewModels
 {
@@ -52,6 +53,15 @@ namespace Shop_Local.ViewModels
             RaisePropertyChanged(propertyName);
 
             return true;
+        }
+
+        #endregion
+
+        #region Methods
+
+        protected bool ValidateEntry(string value, Regex regex)
+        {
+            return regex.IsMatch(value ?? string.Empty);
         }
 
         #endregion

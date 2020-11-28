@@ -1,13 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop_Local.Views.RecommendationPage"
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <inputLayout:SfTextInputLayout 
+                Margin="5,0,5,0"
+                FocusedColor="#00AFA0"
+                ErrorColor="Red"
+                Hint="Business Name" 
+                HelperText="Enter business name"
+                ErrorText="Business name can not contain special characters."
+                HasError="false"
+                ContainerType="Outlined"
+                OutlineCornerRadius="8" 
+                ReserveSpaceForAssistiveLabels="True">
+                <Entry />
+            </inputLayout:SfTextInputLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
