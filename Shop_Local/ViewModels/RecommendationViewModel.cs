@@ -27,6 +27,20 @@ namespace Shop_Local.ViewModels
         public bool IsBusinessNameNotValid { get => _isBusinessNameNotValid; set => SetProperty(ref _isBusinessNameNotValid, value); }
         private bool _isBusinessNameNotValid;
 
+        public string PhoneNumber
+        {
+            get { return _phoneNumber; }
+            set
+            {
+                SetProperty(ref _phoneNumber, value);
+                IsPhoneNumberNotValid = InvalidateText(value, new Regex(RegularExpressions.PhoneNumber));
+            }
+        }
+        private string _phoneNumber;
+
+        public bool IsPhoneNumberNotValid { get => _isPhoneNumberNotValid; set => SetProperty(ref _isPhoneNumberNotValid, value); }
+        private bool _isPhoneNumberNotValid;
+
         #endregion
 
         #region Services

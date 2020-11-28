@@ -120,4 +120,7 @@
   <data name="BusinessName" xml:space="preserve">
     <value>^[A-Za-z0-9 /]{1,80}$</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>^[0-9]{0,10}$</value>
+  </data>
 </root>

@@ -68,5 +68,14 @@ namespace Shop_Local.Validation {
                 return ResourceManager.GetString("BusinessName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^[0-9]{0,10}$.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
     }
 }

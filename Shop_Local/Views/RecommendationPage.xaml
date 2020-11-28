@@ -14,13 +14,26 @@
                 HelperText="Enter business name"
                 ErrorText="Business name can not contain special characters."
                 HasError="{Binding IsBusinessNameValid}"
+                CharMaxLength="80"
+                ShowCharCount="True"
                 ContainerType="Outlined"
                 OutlineCornerRadius="8" 
                 ReserveSpaceForAssistiveLabels="True">
                 <Entry Text="{Binding BusinessName}"/>
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="Name" >
-                <Entry />
+            <inputLayout:SfTextInputLayout
+                Margin="5,0,5,0"
+                FocusedColor="#00AFA0"
+                ErrorColor="Red"
+                Hint="Phone Number"
+                HelperText="Enter contact phone number, no spaces or special characters"
+                ErrorText="Not a valid phone number"
+                HasError="{Binding IsPhoneNumberNotValid}"
+                CharMaxLength="10"
+                ShowCharCount="True"
+                ContainerType="Outlined"
+                OutlineCornerRadius="8">
+                <Entry Text="{Binding PhoneNumber}"/>
             </inputLayout:SfTextInputLayout>
         </StackLayout>
     </ContentPage.Content>
