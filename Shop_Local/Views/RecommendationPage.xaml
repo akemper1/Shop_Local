@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop_Local.Views.RecommendationPage"
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
-            
+
             <inputLayout:SfTextInputLayout 
                 Margin="5,5,5,0"
                 FocusedColor="#00AFA0"
@@ -14,7 +16,7 @@
                 Hint="Business Name" 
                 HelperText="Enter business name"
                 ErrorText="Business name can not contain special characters."
-                HasError="{Binding IsBusinessNameValid}"
+                HasError="{Binding IsBusinessNameNotValid}"
                 CharMaxLength="80"
                 ShowCharCount="True"
                 ContainerType="Outlined"
@@ -22,7 +24,7 @@
                 ReserveSpaceForAssistiveLabels="True">
                 <Entry Text="{Binding BusinessName}"/>
             </inputLayout:SfTextInputLayout>
-            
+
             <inputLayout:SfTextInputLayout
                 Margin="5,5,5,0"
                 FocusedColor="#00AFA0"
@@ -31,13 +33,15 @@
                 HelperText="Enter contact phone number, no spaces or special characters"
                 ErrorText="Not a valid phone number"
                 HasError="{Binding IsPhoneNumberNotValid}"
-                CharMaxLength="10"
-                ShowCharCount="True"
                 ContainerType="Outlined"
-                OutlineCornerRadius="8">
-                <Entry Text="{Binding PhoneNumber}"/>
+                OutlineCornerRadius="8"
+                ReserveSpaceForAssistiveLabels="True">
+                <maskededit:SfMaskedEdit
+                    Value="{Binding PhoneNumber}"
+                    Keyboard="Numeric"
+                    Mask="000-000-0000"/>
             </inputLayout:SfTextInputLayout>
-            
+
             <inputLayout:SfTextInputLayout 
                 Margin="5,5,5,0"
                 FocusedColor="#00AFA0"
@@ -47,11 +51,33 @@
                 ErrorText="Not a valid email address"
                 HasError="{Binding IsEmailNotValid}"
                 ContainerType="Outlined"
-                OutlineCornerRadius="8">
+                OutlineCornerRadius="8"
+                ReserveSpaceForAssistiveLabels="True">
                 <Entry Text="{Binding Email}"/>
             </inputLayout:SfTextInputLayout>
             
+            <inputLayout:SfTextInputLayout 
+                Margin="5,5,5,0"
+                FocusedColor="#00AFA0"
+                Hint="Description" 
+                HelperText="Please enter a short description of the business"
+                ContainerType="Outlined"
+                OutlineCornerRadius="8"
+                ReserveSpaceForAssistiveLabels="True">
+                <Editor Text="{Binding Description}"
+                        AutoSize="TextChanges"/>
+            </inputLayout:SfTextInputLayout>
             
+            <button:SfButton 
+                Margin="5,0,5,0"
+                Text="Submit"
+                BackgroundColor="Transparent"
+                VerticalOptions="EndAndExpand"
+                CornerRadius="5"
+                TextColor="#00AFA0"
+                BorderColor="#00AFA0"
+                BorderWidth="2"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

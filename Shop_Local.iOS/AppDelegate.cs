@@ -1,3 +1,7 @@
+using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.SfPicker.XForms.iOS;
+using Syncfusion.XForms.iOS.MaskedEdit;
+using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Foundation;
 using Prism;
@@ -23,6 +27,10 @@ namespace Shop_Local.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 global::Xamarin.Forms.Forms.Init();
+SfComboBoxRenderer.Init();
+SfPickerRenderer.Init();
+SfMaskedEditRenderer.Init();
+SfButtonRenderer.Init();
 SfTextInputLayoutRenderer.Init();
             LoadApplication(new App(new iOSInitializer()));
 

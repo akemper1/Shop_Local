@@ -1,3 +1,7 @@
+using Syncfusion.XForms.UWP.ComboBox;
+using Syncfusion.SfPicker.XForms.UWP;
+using Syncfusion.XForms.UWP.MaskedEdit;
+using Syncfusion.XForms.UWP.Buttons;
 using Syncfusion.XForms.UWP.TextInputLayout;
 using System.Reflection;
 using System;
@@ -55,6 +59,10 @@ namespace Shop_Local.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
 List<Assembly> assembliesToInclude = new List<Assembly>();
+assembliesToInclude.Add(typeof(SfComboBoxRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfMaskedEditRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfButtonRenderer).GetTypeInfo().Assembly);
 assembliesToInclude.Add(typeof(SfTextInputLayoutRenderer).GetTypeInfo().Assembly);
 Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 
