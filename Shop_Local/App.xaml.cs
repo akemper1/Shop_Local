@@ -15,6 +15,8 @@ namespace Shop_Local
 
         protected override async void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzU5NDg4QDMxMzgyZTMzMmUzMG5URUFXUzEwcEhkRGovWVBCZUQ5L0J6RmxCMmpBd3hYMEtxSkljWm1vTU09");
+
             InitializeComponent();
 
             await NavigationService.NavigateAsync(nameof(MainPage));

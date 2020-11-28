@@ -6,8 +6,9 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
+            
             <inputLayout:SfTextInputLayout 
-                Margin="5,0,5,0"
+                Margin="5,5,5,0"
                 FocusedColor="#00AFA0"
                 ErrorColor="Red"
                 Hint="Business Name" 
@@ -21,8 +22,9 @@
                 ReserveSpaceForAssistiveLabels="True">
                 <Entry Text="{Binding BusinessName}"/>
             </inputLayout:SfTextInputLayout>
+            
             <inputLayout:SfTextInputLayout
-                Margin="5,0,5,0"
+                Margin="5,5,5,0"
                 FocusedColor="#00AFA0"
                 ErrorColor="Red"
                 Hint="Phone Number"
@@ -35,6 +37,21 @@
                 OutlineCornerRadius="8">
                 <Entry Text="{Binding PhoneNumber}"/>
             </inputLayout:SfTextInputLayout>
+            
+            <inputLayout:SfTextInputLayout 
+                Margin="5,5,5,0"
+                FocusedColor="#00AFA0"
+                ErrorColor="Red"
+                Hint="Email" 
+                HelperText="Enter a valid email address"
+                ErrorText="Not a valid email address"
+                HasError="{Binding IsEmailNotValid}"
+                ContainerType="Outlined"
+                OutlineCornerRadius="8">
+                <Entry Text="{Binding Email}"/>
+            </inputLayout:SfTextInputLayout>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
