@@ -97,7 +97,7 @@ namespace Shop_Local.ViewModels
             // Only do things if the tab is active.
             if (IsActive)
             {
-                
+
             }
         }
 
