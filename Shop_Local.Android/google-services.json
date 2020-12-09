@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760785256960",
+    "project_id": "shoplocal-7bc42",
+    "storage_bucket": "shoplocal-7bc42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760785256960:android:67dafe500a1ed67b3ccee5",
+        "android_client_info": {
+          "package_name": "com.kemperapplications.shoplocal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760785256960-h7sch2ah0qhuuuq5jl52c5ak4rvp8ouj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2J76hbRD0eLpG_000ImzOthXOM_Dkzeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760785256960-h7sch2ah0qhuuuq5jl52c5ak4rvp8ouj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
