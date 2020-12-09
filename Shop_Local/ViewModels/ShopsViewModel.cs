@@ -33,7 +33,7 @@ namespace Shop_Local.ViewModels
             _navigationService = navigationService;
 
             // Properties
-            Title = "Find a local Business!";
+            Title = "Shop Local!";
 
             // Event Handlers.
             IsActiveChanged += OnSelected;

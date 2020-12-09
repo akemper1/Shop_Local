@@ -5,7 +5,6 @@ using Shop_Local.Views;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Shop_Local
 {
@@ -19,7 +18,7 @@ namespace Shop_Local
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync(nameof(MainPage));
+            await NavigationService.NavigateAsync(nameof(ShopsPage));
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,7 +28,6 @@ namespace Shop_Local
             #region Navigation
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<RecommendationPage, RecommendationViewModel>();
             containerRegistry.RegisterForNavigation<ShopsPage, ShopsViewModel>();
 

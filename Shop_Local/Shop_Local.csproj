@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.51" />
@@ -29,15 +30,17 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegularExpressions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\RecommendationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ShopsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
 </Project>
