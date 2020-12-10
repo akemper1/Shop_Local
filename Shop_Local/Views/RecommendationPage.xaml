@@ -94,7 +94,8 @@
                         ContainerType="Outlined"
                         OutlineCornerRadius="8"
                         ReserveSpaceForAssistiveLabels="True">
-                        <Entry Text="{Binding StreetNumber}"/>
+                        <Entry Text="{Binding StreetNumber}"
+                               Keyboard="Numeric"/>
                     </inputLayout:SfTextInputLayout>
 
                     <inputLayout:SfTextInputLayout 
@@ -128,7 +129,8 @@
                         ContainerType="Outlined"
                         OutlineCornerRadius="8"
                         ReserveSpaceForAssistiveLabels="True">
-                        <Entry Text="{Binding ZipCode}"/>
+                        <Entry Text="{Binding ZipCode}"
+                                Keyboard="Numeric"/>
                     </inputLayout:SfTextInputLayout>
 
                     <inputLayout:SfTextInputLayout 
@@ -150,7 +152,7 @@
 
                     <inputLayout:SfTextInputLayout 
                         Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Grid.Row="5"
                         Margin="5,5,5,5"
                         FocusedColor="#00AFA0"
