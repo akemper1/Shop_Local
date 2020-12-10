@@ -37,5 +37,8 @@ namespace Shop_Local.Models
 
         [MapTo("sub_category")]
         public IEnumerable<string> SubCategory { get; set; }
+
+        [MapTo("additional_comments")]
+        public string AdditionalComments { get; set; }
     }
 }
