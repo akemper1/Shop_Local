@@ -1,7 +1,5 @@
-﻿using Prism;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using Shop_Local.Validation;
-using System;
 using System.Text.RegularExpressions;
 
 namespace Shop_Local.ViewModels

@@ -1,11 +1,12 @@
 ﻿using Plugin.CloudFirestore;
 using Shop_Local.Models;
+using Shop_Local.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Shop_Local.Services
 {
-    public class FirestoreDatabase
+    public class FirestoreDatabase : IFirestoreDatabase
     {
         public async Task RecommendShop(Business business)
         {
