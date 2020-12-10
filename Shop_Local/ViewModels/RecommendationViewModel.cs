@@ -91,6 +91,20 @@ namespace Shop_Local.ViewModels
         public bool IsStreetNameNotValid { get => _iStreetNameNotValid; set => SetProperty(ref _iStreetNameNotValid, value); }
         private bool _iStreetNameNotValid;
 
+        public string City
+        {
+            get { return _city; }
+            set
+            {
+                SetProperty(ref _city, value);
+
+            }
+        }
+        private string _city;
+
+        public bool IsCityNotValid { get => _isCityNotValid; set => SetProperty(ref _isCityNotValid, value); }
+        private bool _isCityNotValid;
+
         public string ZipCode
         {
             get { return _zipCode; }
@@ -126,8 +140,8 @@ namespace Shop_Local.ViewModels
         public BusinessCategory PriamryCategory { get => _primaryCategory; set => SetProperty(ref _primaryCategory, value); }
         private BusinessCategory _primaryCategory;
 
-        public IList<BusinessCategory> SecondaryCategories { get => _secondaryCategories; set => SetProperty(ref _secondaryCategories, value); }
-        private IList<BusinessCategory> _secondaryCategories;
+        //public IList<BusinessCategory> SecondaryCategories { get => _secondaryCategories; set => SetProperty(ref _secondaryCategories, value); }
+        //private IList<BusinessCategory> _secondaryCategories;
 
         #endregion
 
@@ -150,9 +164,7 @@ namespace Shop_Local.ViewModels
 
         #region Constructors
 
-        public RecommendationViewModel(INavigationService navigationService,
-                                       IFirestoreDatabase firestoreDatabase
-                                       ) : base(navigationService)
+        public RecommendationViewModel(INavigationService navigationService, IFirestoreDatabase firestoreDatabase) : base(navigationService)
         {
             // Services.
             _navigationService = navigationService;

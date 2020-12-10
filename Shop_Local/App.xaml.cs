@@ -5,6 +5,8 @@ using Shop_Local.Views;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
+using Shop_Local.Services.Interfaces;
+using Shop_Local.Services;
 
 namespace Shop_Local
 {
@@ -24,6 +26,12 @@ namespace Shop_Local
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+
+            #region Services
+
+            containerRegistry.RegisterSingleton<IFirestoreDatabase, FirestoreDatabase>();
+
+            #endregion
 
             #region Navigation
 
