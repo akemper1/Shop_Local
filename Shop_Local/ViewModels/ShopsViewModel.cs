@@ -39,10 +39,21 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
+        #region Navigation
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            IsBusy = false;
+            base.OnNavigatedTo(parameters);
+        }
+
+        #endregion
+
         #region Methods
 
         public async void ExecuteRecommendBusiness()
         {
+            IsBusy = true;
             await _navigationService.NavigateAsync(nameof(RecommendationPage));
         }
 

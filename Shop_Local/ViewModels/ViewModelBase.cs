@@ -17,6 +17,13 @@ namespace Shop_Local.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+        public bool _isBusy;
+
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;

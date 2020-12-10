@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="Shop_Local.Views.ShopsPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             IsBusy="{Binding LoadingPage}">
 
     <ContentPage.Content>
         <StackLayout>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             
             <button:SfButton 
                 Margin="10,0,10,10"
@@ -18,7 +21,7 @@
                 TextColor="#00AFA0"
                 BorderColor="#00AFA0"
                 BorderWidth="2"/>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
