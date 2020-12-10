@@ -1,15 +1,13 @@
-﻿using Prism;
+﻿using Prism.Commands;
 using Prism.Navigation;
-using System;
+using Shop_Local.Views;
+using System.Windows.Input;
 
 namespace Shop_Local.ViewModels
 {
-    public class ShopsViewModel : ViewModelBase, IActiveAware
+    public class ShopsViewModel : ViewModelBase
     {
         #region Properties
-
-        public bool IsActive { get => _isActive; set => SetProperty(ref _isActive, value, RaiseIsActiveChanged); }
-        private bool _isActive;
 
         #endregion
 
@@ -19,9 +17,9 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
-        #region Event Handlers
+        #region ICommand
 
-        public event EventHandler IsActiveChanged;
+        public ICommand RecommendBusiness { get; set; }
 
         #endregion
 
@@ -35,25 +33,17 @@ namespace Shop_Local.ViewModels
             // Properties
             Title = "Shop Local!";
 
-            // Event Handlers.
-            IsActiveChanged += OnSelected;
+            // Commands.
+            RecommendBusiness = new DelegateCommand(ExecuteRecommendBusiness);
         }
 
         #endregion
 
         #region Methods
 
-        private void RaiseIsActiveChanged()
+        public async void ExecuteRecommendBusiness()
         {
-            IsActiveChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnSelected(object sender, EventArgs e)
-        {
-            if (IsActive)
-            {
-
-            }
+            await _navigationService.NavigateAsync(nameof(RecommendationPage));
         }
 
         #endregion

@@ -18,7 +18,7 @@ namespace Shop_Local
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync(nameof(ShopsPage));
+            await NavigationService.NavigateAsync("NavigationPage/ShopsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
