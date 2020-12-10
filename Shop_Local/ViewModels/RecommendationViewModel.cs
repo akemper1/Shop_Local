@@ -6,12 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace Shop_Local.ViewModels
 {
-    public class RecommendationViewModel : ViewModelBase, IActiveAware
+    public class RecommendationViewModel : ViewModelBase
     {
         #region Properties
-
-        public bool IsActive { get => _isActive; set => SetProperty(ref _isActive, value, RaiseIsActiveChanged); }
-        private bool _isActive;
 
         public string BusinessName
         {
@@ -63,12 +60,6 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
-        #region Event Handlers
-
-        public event EventHandler IsActiveChanged;
-
-        #endregion
-
         #region Constructors
 
         public RecommendationViewModel(INavigationService navigationService) : base(navigationService)
@@ -78,28 +69,11 @@ namespace Shop_Local.ViewModels
 
             // Properties
             Title = "Recommend a Business!";
-
-            // Event Handlers.
-            IsActiveChanged += OnSelected;
         }
 
         #endregion
 
         #region Methods
-
-        private void RaiseIsActiveChanged()
-        {
-            IsActiveChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnSelected(object sender, EventArgs e)
-        {
-            // Only do things if the tab is active.
-            if (IsActive)
-            {
-
-            }
-        }
 
         #endregion
     }

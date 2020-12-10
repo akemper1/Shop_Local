@@ -1,4 +1,5 @@
 ﻿using Plugin.CloudFirestore.Attributes;
+using System.Collections.Generic;
 
 namespace Shop_Local.Models
 {
@@ -28,7 +29,13 @@ namespace Shop_Local.Models
         [MapTo("zip_code")]
         public int ZipCode { get; set; }
 
+        [MapTo("suite")]
+        public string Suite { get; set; }
+
         [MapTo("category")]
         public string Category { get; set; }
+
+        [MapTo("sub_category")]
+        public IEnumerable<string> SubCategory { get; set; }
     }
 }
