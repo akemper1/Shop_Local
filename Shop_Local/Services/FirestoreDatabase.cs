@@ -11,7 +11,10 @@ namespace Shop_Local.Services
         public async Task RecommendShop(Business business)
         {
             // Insert into recommended businesses collection.
-            await CrossCloudFirestore.Current.Instance.Collection("recommended_businesses").AddAsync(business);
+            await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("recommended_businesses")
+                                     .AddAsync(business);
         }
 
         public async Task<IEnumerable<Business>> GetAllBusinessesByZipCode(int zipcode)
@@ -22,8 +25,9 @@ namespace Shop_Local.Services
             // Query.
             var query = await CrossCloudFirestore.Current
                                                  .Instance
-                                                 .Collection("approved_businesses")
+                                                 .Collection("recommended_businesses")
                                                  .WhereEqualsTo("zip_code", zipcode)
+                                                 .WhereEqualsTo("approved", true)
                                                  .GetAsync();
 
             // Case back to object to be used.

@@ -1,9 +1,14 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using Shop_Local.Enums;
+using Shop_Local.Models;
 using Shop_Local.Services.Interfaces;
 using Shop_Local.Validation;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Shop_Local.ViewModels
 {
@@ -20,12 +25,24 @@ namespace Shop_Local.ViewModels
             {
                 SetProperty(ref _businessName, value);
                 IsBusinessNameNotValid = InvalidateText(value, new Regex(RegularExpressions.BusinessName));
+
+                if (string.IsNullOrWhiteSpace(_businessName))
+                {
+                    BusinessNameErrorText = "Required *";
+                }
+                else
+                {
+                    BusinessNameErrorText = "Business name can not contain special characters.";
+                }
             }
         }
-        private string _businessName;
+        private string _businessName = "";
 
         public bool IsBusinessNameNotValid { get => _isBusinessNameNotValid; set => SetProperty(ref _isBusinessNameNotValid, value); }
         private bool _isBusinessNameNotValid;
+
+        public string BusinessNameErrorText { get => _businessNameErrorText; set => SetProperty(ref _businessNameErrorText, value); }
+        private string _businessNameErrorText;
 
         #endregion
 
@@ -38,12 +55,20 @@ namespace Shop_Local.ViewModels
             {
                 SetProperty(ref _phoneNumber, value);
                 IsPhoneNumberNotValid = InvalidateText(value, new Regex(RegularExpressions.PhoneNumber));
+
+                if (string.IsNullOrWhiteSpace(_phoneNumber))
+                {
+
+                }
             }
         }
-        private string _phoneNumber;
+        private string _phoneNumber = "";
 
         public bool IsPhoneNumberNotValid { get => _isPhoneNumberNotValid; set => SetProperty(ref _isPhoneNumberNotValid, value); }
         private bool _isPhoneNumberNotValid;
+
+        public string PhoneNumberErrorText { get => _phoneNumberErrorText; set => SetProperty(ref _phoneNumberErrorText, value); }
+        private string _phoneNumberErrorText;
 
         public string Email
         {
@@ -52,12 +77,24 @@ namespace Shop_Local.ViewModels
             {
                 SetProperty(ref _email, value);
                 IsEmailNotValid = InvalidateText(value, new Regex(RegularExpressions.Email));
+
+                if (string.IsNullOrWhiteSpace(_email))
+                {
+                    EmailErrorText = "Required *";
+                }
+                else
+                {
+                    EmailErrorText = "Not a valid email address.";
+                }
             }
         }
-        private string _email;
+        private string _email = "";
 
         public bool IsEmailNotValid { get => _isEmailNotValid; set => SetProperty(ref _isEmailNotValid, value); }
         private bool _isEmailNotValid;
+
+        public string EmailErrorText { get => _emailErrorText; set => SetProperty(ref _emailErrorText, value); }
+        private string _emailErrorText;
 
         #endregion
 
@@ -140,15 +177,8 @@ namespace Shop_Local.ViewModels
         public BusinessCategory PriamryCategory { get => _primaryCategory; set => SetProperty(ref _primaryCategory, value); }
         private BusinessCategory _primaryCategory;
 
-        //public IList<BusinessCategory> SecondaryCategories { get => _secondaryCategories; set => SetProperty(ref _secondaryCategories, value); }
-        //private IList<BusinessCategory> _secondaryCategories;
-
-        #endregion
-
-        #region Additional Information
-
-        public string AdditionalComments { get => _additionalComments; set => SetProperty(ref _additionalComments, value); }
-        private string _additionalComments;
+        public IList<BusinessCategory> SecondaryCategories { get => _secondaryCategories; set => SetProperty(ref _secondaryCategories, value); }
+        private IList<BusinessCategory> _secondaryCategories;
 
         #endregion
 
@@ -162,6 +192,12 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
+        #region ICommand
+
+        public ICommand AddBusiness { get; set; }
+
+        #endregion
+
         #region Constructors
 
         public RecommendationViewModel(INavigationService navigationService, IFirestoreDatabase firestoreDatabase) : base(navigationService)
@@ -172,11 +208,30 @@ namespace Shop_Local.ViewModels
 
             // Properties
             Title = "Recommend a Business!";
+
+            // Commands.
+            AddBusiness = new DelegateCommand(async ()=> await Submit());
         }
 
         #endregion
 
         #region Methods
+
+        public async Task ExecuteAddBusiness()
+        {
+            var business = new Business()
+            {
+                ID   = Guid.NewGuid().ToString(),
+                Name = BusinessName,
+            };
+
+            await _firestoreDatabase.RecommendShop(business);
+        }
+
+        Task Submit()
+        {
+            return ExecuteAddBusiness();
+        }
 
         #endregion
     }

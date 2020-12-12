@@ -61,7 +61,7 @@ namespace Shop_Local.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^[a-zA-Z0-9_]{1,80}$.
+        ///   Looks up a localized string similar to ^[a-zA-Z0-9_\s]{1,80}$.
         /// </summary>
         public static string BusinessName {
             get {

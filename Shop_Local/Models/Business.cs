@@ -5,6 +5,9 @@ namespace Shop_Local.Models
 {
     public class Business
     {
+        [MapTo("id")]
+        public string ID { get; set; }
+
         [MapTo("name")]
         public string Name { get; set; }
 
@@ -40,5 +43,8 @@ namespace Shop_Local.Models
 
         [MapTo("additional_comments")]
         public string AdditionalComments { get; set; }
+
+        [MapTo("approved")]
+        public bool Approved { get; set; }
     }
 }
