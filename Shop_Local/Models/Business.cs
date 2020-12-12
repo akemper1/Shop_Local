@@ -20,11 +20,8 @@ namespace Shop_Local.Models
         [MapTo("website")]
         public string Website { get; set; }
 
-        [MapTo("street_number")]
-        public int StreetNumber { get; set; }
-
-        [MapTo("street_name")]
-        public string StreetName { get; set; }
+        [MapTo("street_number_and_name")]
+        public string StreetNumberAndName { get; set; }
 
         [MapTo("city")]
         public string City { get; set; }
