@@ -224,7 +224,6 @@ namespace Shop_Local.ViewModels
             Title = "Recommend a Business!";
 
             // Commands.
-
             // Async way of delegate command, that observes a property.
             AddBusiness = new DelegateCommand(async ()=> await Submit()).ObservesCanExecute(() => CanSubmit);
         }
