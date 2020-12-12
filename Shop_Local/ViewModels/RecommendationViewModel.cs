@@ -28,6 +28,7 @@ namespace Shop_Local.ViewModels
                 SetProperty(ref _businessName, value);
                 IsBusinessNameNotValid = InvalidateText(value, new Regex(RegularExpressions.BusinessName));
 
+                // Sets the proper error message based off user input or lack there of.
                 if (string.IsNullOrWhiteSpace(_businessName))
                 {
                     BusinessNameErrorText = "Required *";
@@ -37,6 +38,7 @@ namespace Shop_Local.ViewModels
                     BusinessNameErrorText = "Business name can not contain special characters.";
                 }
 
+                // Do this so we can turn on and off the submit button.
                 RaisePropertyChanged(nameof(CanSubmit));
             }
         }
@@ -60,6 +62,7 @@ namespace Shop_Local.ViewModels
                 SetProperty(ref _phoneNumber, value);
                 IsPhoneNumberNotValid = InvalidateText(value, new Regex(RegularExpressions.PhoneNumber));
 
+                // Sets the proper error message based off user input or lack there of.
                 if (string.IsNullOrWhiteSpace(_phoneNumber))
                 {
                     PhoneNumberErrorText = "Required *";
@@ -69,6 +72,7 @@ namespace Shop_Local.ViewModels
                     PhoneNumberErrorText = "Not a valid phone number.";
                 }
 
+                // Do this so we can turn on and off the submit button.
                 RaisePropertyChanged(nameof(CanSubmit));
             }
         }
@@ -88,6 +92,7 @@ namespace Shop_Local.ViewModels
                 SetProperty(ref _email, value);
                 IsEmailNotValid = InvalidateText(value, new Regex(RegularExpressions.Email));
 
+                // Sets the proper error message based off user input or lack there of.
                 if (string.IsNullOrWhiteSpace(_email))
                 {
                     EmailErrorText = "Required *";
@@ -97,6 +102,7 @@ namespace Shop_Local.ViewModels
                     EmailErrorText = "Not a valid email address.";
                 }
 
+                // Do this so we can turn on and off the submit button.
                 RaisePropertyChanged(nameof(CanSubmit));
             }
         }
@@ -112,6 +118,7 @@ namespace Shop_Local.ViewModels
 
         #region Submission Validation
 
+        // Boolean to turn on and off submit button based of user input.
         public bool CanSubmit => !IsBusinessNameNotValid && !IsEmailNotValid && !IsPhoneNumberNotValid;
 
         #endregion
@@ -217,6 +224,8 @@ namespace Shop_Local.ViewModels
             Title = "Recommend a Business!";
 
             // Commands.
+
+            // Async way of delegate command, that observes a property.
             AddBusiness = new DelegateCommand(async ()=> await Submit()).ObservesCanExecute(() => CanSubmit);
         }
 
@@ -228,6 +237,7 @@ namespace Shop_Local.ViewModels
         {
             base.OnNavigatedTo(parameters);
 
+            // Add categories to list so they can be displayed.
             PrimaryCategories = new ObservableCollection<string>(Enum.GetNames(typeof(BusinessCategory)).ToList());
         }
 
@@ -237,6 +247,7 @@ namespace Shop_Local.ViewModels
 
         public async Task ExecuteAddBusiness()
         {
+            // Creating new business object.
             var business = new Business()
             {
                 ID          = Guid.NewGuid().ToString(),
@@ -245,9 +256,11 @@ namespace Shop_Local.ViewModels
                 Email = Email,
             };
 
+            // Saving new business to the DB.
             await _firestoreDatabase.RecommendShop(business);
         }
 
+        // Method so we can ensure that command is async.
         Task Submit()
         {
             return ExecuteAddBusiness();
