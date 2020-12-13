@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
@@ -29,6 +28,12 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
+                        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                           VerticalOptions="CenterAndExpand" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           Grid.Column="1"
+                                           Grid.Row="3"/>
+
                         <inputLayout:SfTextInputLayout Grid.ColumnSpan="3"
                                                        Grid.Row="0"
                                                        Margin="5,5,5,5"
@@ -43,7 +48,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        ContainerType="Outlined"
                                                        OutlineCornerRadius="8" 
                                                        ReserveSpaceForAssistiveLabels="True">
-                            <Entry Text="{Binding BusinessName}"/>
+                            <Entry Text="{Binding BusinessName}"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.ColumnSpan="3"
@@ -60,7 +66,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        ReserveSpaceForAssistiveLabels="True">
                             <maskededit:SfMaskedEdit Value="{Binding PhoneNumber}"
                                                      Keyboard="Numeric"
-                                                     Mask="000-000-0000"/>
+                                                     Mask="000-000-0000"
+                                                     ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.ColumnSpan="3"
@@ -75,7 +82,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        ContainerType="Outlined"
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
-                            <Entry Text="{Binding Email}"/>
+                            <Entry Text="{Binding Email}"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.Column="0"
@@ -91,7 +99,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        ContainerType="Outlined"
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
-                            <Entry Text="{Binding StreetNumberAndName}"/>
+                            <Entry Text="{Binding StreetNumberAndName}"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.Column="0"
@@ -100,14 +109,15 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        Margin="5,5,5,5"
                                                        FocusedColor="#00AFA0"
                                                        ErrorColor="Red"
-                                                       Hint="Suite" 
-                                                       HelperText="Enter a suite."
-                                                       ErrorText="Not a suite."
+                                                       Hint="Apartment, Suite, or Building" 
+                                                       HelperText="Enter a Apartment, Suite, or Building"
+                                                       ErrorText="Not a valid Apt/Ste/Bldg."
                                                        HasError="{Binding IsSuiteNotValid}"
                                                        ContainerType="Outlined"
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
-                            <Entry Text="{Binding Suite}"/>
+                            <Entry Text="{Binding Suite}"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.Column="0"
@@ -123,7 +133,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        ContainerType="Outlined"
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
-                            <Entry Text="{Binding City}"/>
+                            <Entry Text="{Binding City}"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Grid.Column="2"
@@ -140,7 +151,8 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
                             <Entry Text="{Binding ZipCode}"
-                                   Keyboard="Numeric"/>
+                                   Keyboard="Numeric"
+                                   ReturnType="Next"/>
                         </inputLayout:SfTextInputLayout>
 
                         <StackLayout Grid.Column="0" 
@@ -163,16 +175,18 @@ xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib
                 </ScrollView.Content>
             </ScrollView>
             
-            <button:SfButton 
-                    Margin="10,10,10,10"
-                    Text="Submit"
-                    Command="{Binding AddBusiness}"
-                    BackgroundColor="Transparent"
-                    VerticalOptions="EndAndExpand"
-                    CornerRadius="5"
-                    TextColor="#00AFA0"
-                    BorderColor="#00AFA0"
-                    BorderWidth="2"/>
+            <button:SfButton Margin="10,10,10,10"
+                             Text="Submit"
+                             Command="{Binding AddBusiness}"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="EndAndExpand"
+                             HasShadow="True"
+                             HeightRequest="50"
+                             CornerRadius="5"
+                             TextColor="#00AFA0"
+                             FontSize="18"
+                             BorderColor="#00AFA0"
+                             BorderWidth="2"/>
 
         </StackLayout>
     </ContentPage.Content>

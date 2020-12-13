@@ -27,7 +27,7 @@ namespace Shop_Local.Models
         public string City { get; set; }
 
         [MapTo("zip_code")]
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
         [MapTo("suite")]
         public string Suite { get; set; }

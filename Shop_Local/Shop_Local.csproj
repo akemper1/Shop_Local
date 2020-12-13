@@ -9,6 +9,7 @@
     <PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.3.0.51" />

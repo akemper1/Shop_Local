@@ -4,6 +4,7 @@ using Shop_Local.Enums;
 using Shop_Local.Models;
 using Shop_Local.Services.Interfaces;
 using Shop_Local.Validation;
+using Shop_Local.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -246,17 +247,31 @@ namespace Shop_Local.ViewModels
 
         public async Task ExecuteAddBusiness()
         {
+            // Turn on wait indicator.
+            IsBusy = true;
+
             // Creating new business object.
             var business = new Business()
             {
-                ID          = Guid.NewGuid().ToString(),
-                Name        = BusinessName,
-                PhoneNumber = PhoneNumber,
-                Email = Email,
+                ID                  = Guid.NewGuid().ToString(),
+                Name                = BusinessName,
+                PhoneNumber         = PhoneNumber,
+                Email               = Email,
+                StreetNumberAndName = StreetNumberAndName,
+                Suite               = Suite,
+                City                = City,
+                ZipCode             = ZipCode,
+                Category            = PrimaryCategory,
             };
 
             // Saving new business to the DB.
             await _firestoreDatabase.RecommendShop(business);
+
+            // Turn off wait indicator.
+            IsBusy = false;
+
+            // Navigate back to Shops Page.
+            await _navigationService.GoBackToRootAsync();
         }
 
         // Method so we can ensure that command is async.

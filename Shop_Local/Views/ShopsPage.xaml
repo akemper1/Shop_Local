@@ -17,8 +17,11 @@
                 Command="{Binding RecommendBusiness}"
                 BackgroundColor="Transparent"
                 VerticalOptions="EndAndExpand"
+                HasShadow="True"
+                HeightRequest="50"
                 CornerRadius="5"
                 TextColor="#00AFA0"
+                FontSize="16"
                 BorderColor="#00AFA0"
                 BorderWidth="2"/>
 
