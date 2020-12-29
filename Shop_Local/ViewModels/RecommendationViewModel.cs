@@ -4,7 +4,7 @@ using Shop_Local.Enums;
 using Shop_Local.Models;
 using Shop_Local.Services.Interfaces;
 using Shop_Local.Validation;
-using Shop_Local.Views;
+using Syncfusion.XForms.PopupLayout;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -197,6 +197,9 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
+        public bool CanShowPopUp { get => _canShowPopUp; set => SetProperty(ref _canShowPopUp, value); }
+        private bool _canShowPopUp;
+
         #endregion
 
         #region Services
@@ -210,6 +213,8 @@ namespace Shop_Local.ViewModels
         #region ICommand
 
         public ICommand AddBusiness { get; set; }
+
+        public ICommand Close { get; set; }
 
         #endregion
 
@@ -227,6 +232,7 @@ namespace Shop_Local.ViewModels
             // Commands.
             // Async way of delegate command, that observes a property.
             AddBusiness = new DelegateCommand(async ()=> await Submit()).ObservesCanExecute(() => CanSubmit);
+            Close       = new DelegateCommand(async ()=> await ClosePopup());
         }
 
         #endregion
@@ -267,17 +273,28 @@ namespace Shop_Local.ViewModels
             // Saving new business to the DB.
             await _firestoreDatabase.RecommendShop(business);
 
+            // Show popup.
+            CanShowPopUp = true;
+
             // Turn off wait indicator.
             IsBusy = false;
-
-            // Navigate back to Shops Page.
-            await _navigationService.GoBackToRootAsync();
         }
 
         // Method so we can ensure that command is async.
         Task Submit()
         {
             return ExecuteAddBusiness();
+        }
+
+        public async Task ExecuteClosePopup()
+        {
+            // Navigate back to Shops Page.
+            await _navigationService.GoBackToRootAsync();
+        }
+
+        Task ClosePopup()
+        {
+            return ExecuteClosePopup();
         }
 
         #endregion

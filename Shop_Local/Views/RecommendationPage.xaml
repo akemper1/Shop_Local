@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
+             xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -66,6 +66,7 @@ xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusi
                                                        OutlineCornerRadius="8"
                                                        ReserveSpaceForAssistiveLabels="True">
                             <maskededit:SfMaskedEdit Value="{Binding PhoneNumber}"
+                                                     ValidationMode="KeyPress"
                                                      Keyboard="Numeric"
                                                      Mask="000-000-0000"
                                                      ReturnType="Next"/>
@@ -170,30 +171,59 @@ xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusi
                                                  Watermark="Type of Business">
                             </combobox:SfComboBox>
                         </StackLayout>
-
                     </Grid>
-
                 </ScrollView.Content>
             </ScrollView>
-            
-            <popuplayout:SfPopupLayout x:Name="popup" IsOpen="{Binding CanShowPopup}">
-                <popuplayout:SfPopupLayout.Content>
-                    <StackLayout>
-                        <button:SfButton Margin="10,10,10,10"
-                             Text="Submit"
-                             Command="{Binding AddBusiness}"
-                             BackgroundColor="Transparent"
-                             VerticalOptions="EndAndExpand"
-                             HeightRequest="50"
-                             CornerRadius="5"
-                             TextColor="#00AFA0"
-                             FontSize="18"
-                             BorderColor="#00AFA0"
-                             BorderWidth="2"/>
-                    </StackLayout>
-                </popuplayout:SfPopupLayout.Content>
-            </popuplayout:SfPopupLayout>
-            
+
+            <StackLayout VerticalOptions="EndAndExpand">
+
+                <popuplayout:SfPopupLayout x:Name="popup" IsOpen="{Binding CanShowPopUp}" ClosePopupOnBackButtonPressed="False" StaysOpen="True"
+                                           >
+                    <popuplayout:SfPopupLayout.PopupView>
+                        <popuplayout:PopupView AnimationMode="Zoom" 
+                                               AcceptCommand="{Binding Close}"
+                                               AcceptButtonText="Close"
+                                               ShowCloseButton="False">
+                            <popuplayout:PopupView.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Thank you!"
+                                           FontSize="30"
+                                           TextColor="#00AFA0"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           FontAttributes="Bold"/>
+                                </DataTemplate>
+                            </popuplayout:PopupView.HeaderTemplate>
+                            <popuplayout:PopupView.ContentTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding BusinessName, StringFormat='Thank you for recommending {0}, our team will work hard to make sure they are added to our App!'}"
+                                           HorizontalTextAlignment="Start"
+                                           Padding="10"
+                                           FontSize="18"/>
+                                </DataTemplate>
+                            </popuplayout:PopupView.ContentTemplate>
+                        </popuplayout:PopupView>
+                    </popuplayout:SfPopupLayout.PopupView>
+                    <popuplayout:SfPopupLayout.Content>
+                        <StackLayout>
+                        </StackLayout>
+                    </popuplayout:SfPopupLayout.Content>
+                </popuplayout:SfPopupLayout>
+                
+                <button:SfButton Margin="10,10,10,10"
+                                 Text="Submit"
+                                 Command="{Binding AddBusiness}"
+                                 BackgroundColor="Transparent"
+                                 VerticalOptions="EndAndExpand"
+                                 HeightRequest="50"
+                                 CornerRadius="5"
+                                 TextColor="#00AFA0"
+                                 FontSize="18"
+                                 BorderColor="#00AFA0"
+                                 BorderWidth="2"/>
+            </StackLayout>
+
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
