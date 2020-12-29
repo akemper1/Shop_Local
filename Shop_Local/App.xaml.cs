@@ -20,7 +20,18 @@ namespace Shop_Local
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ShopsPage");
+            var authenticationService = Current.Container.Resolve<IAuthenticationService>();
+
+            if (authenticationService.IsSignedIn)
+            {
+                // User is logged in, navigate to Shops Page.
+                await NavigationService.NavigateAsync("NavigationPage/ShopsPage");
+            }
+            else
+            {
+                // User it not logged in, navigate to Login Page.
+                await NavigationService.NavigateAsync(nameof(LoginPage));
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +49,7 @@ namespace Shop_Local
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RecommendationPage, RecommendationViewModel>();
             containerRegistry.RegisterForNavigation<ShopsPage, ShopsViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
 
             #endregion
         }
