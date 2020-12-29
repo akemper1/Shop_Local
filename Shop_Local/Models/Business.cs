@@ -43,5 +43,8 @@ namespace Shop_Local.Models
 
         [MapTo("approved")]
         public bool Approved { get; set; }
+
+        [MapTo("recommended_by")]
+        public string RecommendedBy { get; set; }
     }
 }

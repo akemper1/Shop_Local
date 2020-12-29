@@ -251,6 +251,8 @@ namespace Shop_Local.ViewModels
 
         #region Methods
 
+        #region Adding Business
+
         public async Task ExecuteAddBusiness()
         {
             // Turn on wait indicator.
@@ -286,6 +288,10 @@ namespace Shop_Local.ViewModels
             return ExecuteAddBusiness();
         }
 
+        #endregion
+
+        #region Close Popup
+
         public async Task ExecuteClosePopup()
         {
             // Navigate back to Shops Page.
@@ -296,6 +302,8 @@ namespace Shop_Local.ViewModels
         {
             return ExecuteClosePopup();
         }
+
+        #endregion
 
         #endregion
     }
