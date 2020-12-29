@@ -1,3 +1,4 @@
+using Syncfusion.XForms.UWP.PopupLayout;
 using Prism;
 using Prism.Ioc;
 using System;
@@ -21,7 +22,8 @@ namespace Shop_Local.UWP
     {
         public MainPage()
         {
-            this.InitializeComponent();
+this.InitializeComponent();
+SfPopupLayoutRenderer.Init();
 
             LoadApplication(new Shop_Local.App(new UwpInitializer()));
         }

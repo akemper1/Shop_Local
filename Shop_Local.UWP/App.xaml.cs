@@ -1,3 +1,4 @@
+using Syncfusion.XForms.UWP.PopupLayout;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
 using Syncfusion.XForms.UWP.ComboBox;
 using Syncfusion.SfPicker.XForms.UWP;
@@ -60,6 +61,7 @@ namespace Shop_Local.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
 List<Assembly> assembliesToInclude = new List<Assembly>();
+assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
 assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
 assembliesToInclude.Add(typeof(SfComboBoxRenderer).GetTypeInfo().Assembly);
 assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);

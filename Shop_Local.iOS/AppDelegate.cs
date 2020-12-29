@@ -1,3 +1,4 @@
+using Syncfusion.XForms.iOS.PopupLayout;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.SfPicker.XForms.iOS;
@@ -28,6 +29,7 @@ namespace Shop_Local.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 global::Xamarin.Forms.Forms.Init();
+SfPopupLayoutRenderer.Init();
 SfBusyIndicatorRenderer.Init();
 SfComboBoxRenderer.Init();
 SfPickerRenderer.Init();

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="Shop_Local.Views.ShopsPage"
@@ -9,15 +10,52 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                                   VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand"
+                                   Grid.Row="1"/>
+
+                <inputLayout:SfTextInputLayout Hint="Zip Code"
+                                               HelperText="Enter Zip Code to search Businesses in your area."
+                                               Grid.Column="0"
+                                               VerticalOptions="StartAndExpand"
+                                               HorizontalOptions="StartAndExpand"
+                                               Margin="5"
+                                               CharMaxLength="5"
+                                               ShowCharCount="True"
+                                               FocusedColor="#00AFA0"
+                                               ErrorColor="Red"
+                                               ContainerType="Outlined"
+                                               OutlineCornerRadius="8" 
+                                               ReserveSpaceForAssistiveLabels="True"
+                                               TrailingViewPosition="Outside">
+                    <Entry />
+                </inputLayout:SfTextInputLayout>
+
+                <button:SfButton Text="Search"
+                                 Grid.Column="1"
+                                 Grid.Row="0"
+                                 Margin="0,10,5,5"
+                                 CornerRadius="25"
+                                 VerticalOptions="CenterAndExpand"/>
+            </Grid>
+
             <button:SfButton 
                 Margin="10,0,10,10"
                 Text="Recommend a Business"
                 Command="{Binding RecommendBusiness}"
                 BackgroundColor="Transparent"
                 VerticalOptions="EndAndExpand"
-                HasShadow="True"
                 HeightRequest="50"
                 CornerRadius="5"
                 TextColor="#00AFA0"
