@@ -72,7 +72,7 @@
       <Version>18.3.0.51</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>18.3.0.51</Version>
+      <Version>18.4.0.32</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
       <Version>18.3.0.51</Version>
