@@ -9,10 +9,7 @@ namespace Shop_Local.iOS.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        public AuthenticationService()
-        {
-
-        }
+        public AuthenticationService() { }
 
         public bool IsSignedIn => Auth.DefaultInstance.CurrentUser != null;
 

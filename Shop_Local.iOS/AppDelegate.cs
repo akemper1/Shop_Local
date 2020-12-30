@@ -9,7 +9,8 @@ using Foundation;
 using Prism;
 using Prism.Ioc;
 using UIKit;
-
+using Shop_Local.Services.Interfaces;
+using Shop_Local.iOS.Services;
 
 namespace Shop_Local.iOS
 {
@@ -28,14 +29,18 @@ namespace Shop_Local.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-global::Xamarin.Forms.Forms.Init();
-SfPopupLayoutRenderer.Init();
-SfBusyIndicatorRenderer.Init();
-SfComboBoxRenderer.Init();
-SfPickerRenderer.Init();
-SfMaskedEditRenderer.Init();
-SfButtonRenderer.Init();
-SfTextInputLayoutRenderer.Init();
+            global::Xamarin.Forms.Forms.Init();
+            SfPopupLayoutRenderer.Init();
+            SfBusyIndicatorRenderer.Init();
+            SfComboBoxRenderer.Init();
+            SfPickerRenderer.Init();
+            SfMaskedEditRenderer.Init();
+            SfButtonRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
+
+            // Initialize Firebase.
+            Firebase.Core.App.Configure();
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
@@ -47,6 +52,7 @@ SfTextInputLayoutRenderer.Init();
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register any platform specific implementations
+            containerRegistry.RegisterSingleton<IAuthenticationService, AuthenticationService>();
         }
     }
 }

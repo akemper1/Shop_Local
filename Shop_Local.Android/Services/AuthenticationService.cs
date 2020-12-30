@@ -8,6 +8,8 @@ namespace Shop_Local.Droid.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
+        public AuthenticationService() { }
+
         public bool IsSignedIn => FirebaseAuth.Instance.CurrentUser != null;
 
         public User GetCurrentUser()
@@ -19,7 +21,7 @@ namespace Shop_Local.Droid.Services
                 result = new User()
                 {
                     Username = FirebaseAuth.Instance.CurrentUser.DisplayName,
-                    Email = FirebaseAuth.Instance.CurrentUser.Email,
+                    Email    = FirebaseAuth.Instance.CurrentUser.Email,
                 };
             }
 

@@ -1,4 +1,5 @@
 ﻿using Prism.Navigation;
+using Shop_Local.Services.Interfaces;
 
 namespace Shop_Local.ViewModels
 {
@@ -10,14 +11,18 @@ namespace Shop_Local.ViewModels
 
         protected readonly INavigationService _navigationService;
 
-        #endregion
+        protected readonly IAuthenticationService _authenticationService;
 
         #endregion
 
-        public LoginViewModel(INavigationService navigationService) : base(navigationService)
+        #endregion
+
+        public LoginViewModel(INavigationService     navigationService,
+                              IAuthenticationService authenticationService) : base(navigationService)
         {
             // Services.
-            _navigationService = navigationService;
+            _navigationService     = navigationService;
+            _authenticationService = authenticationService;
         }
     }
 }
