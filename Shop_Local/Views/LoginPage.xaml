@@ -4,7 +4,8 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop_Local.Views.LoginPage"
-             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         
         <Grid>
@@ -55,8 +56,7 @@
                    FontSize="14"
                    Padding="15">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer>
-                    </TapGestureRecognizer>
+                    <TapGestureRecognizer/>
                 </Label.GestureRecognizers>
             </Label>
             
@@ -78,6 +78,9 @@
                 <Label Text="Sign up"
                        TextColor="Red"
                        FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUp}"/>
+                    </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
 

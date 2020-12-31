@@ -50,6 +50,7 @@ namespace Shop_Local
             containerRegistry.RegisterForNavigation<RecommendationPage, RecommendationViewModel>();
             containerRegistry.RegisterForNavigation<ShopsPage, ShopsViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<SignUpPage, SignUpViewModel>();
 
             #endregion
         }

@@ -1,5 +1,8 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using Shop_Local.Services.Interfaces;
+using Shop_Local.Views;
+using System.Windows.Input;
 
 namespace Shop_Local.ViewModels
 {
@@ -15,6 +18,12 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
+        #region ICommand
+
+        public ICommand SignUp { get; set; }
+
+        #endregion
+
         #endregion
 
         public LoginViewModel(INavigationService     navigationService,
@@ -23,6 +32,18 @@ namespace Shop_Local.ViewModels
             // Services.
             _navigationService     = navigationService;
             _authenticationService = authenticationService;
+
+            // Commands.
+            SignUp = new DelegateCommand(ExecuteSignUp);
         }
+
+        #region Methods
+
+        public async void ExecuteSignUp()
+        {
+            await _navigationService.NavigateAsync(nameof(SignUpPage));
+        }
+
+        #endregion
     }
 }
