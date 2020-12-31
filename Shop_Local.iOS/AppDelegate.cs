@@ -41,6 +41,8 @@ namespace Shop_Local.iOS
             // Initialize Firebase.
             Firebase.Core.App.Configure();
 
+            Syncfusion.XForms.iOS.Graphics.SfGradientViewRenderer.Init();
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

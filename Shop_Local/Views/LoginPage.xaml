@@ -1,12 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Shop_Local.Views.LoginPage">
+             x:Class="Shop_Local.Views.LoginPage"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <gradient:SfGradientView Grid.RowSpan="6">
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#ff05cd" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#313196" Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+            
+            <inputLayout:SfTextInputLayout Hint="Email"
+                                           ContainerType="None"
+                                           UnfocusedColor="White"
+                                           Padding="15"
+                                           VerticalOptions="StartAndExpand"
+                                           Grid.Row="2">
+                <Entry ReturnType="Next"/>
+            </inputLayout:SfTextInputLayout>
+            
+            <inputLayout:SfTextInputLayout Hint="Password"
+                                           ContainerType="None"
+                                           UnfocusedColor="White"
+                                           Padding="15"
+                                           VerticalOptions="StartAndExpand"
+                                           Grid.Row="3">
+                <Entry IsPassword="True"
+                       ReturnType="Done"/>
+            </inputLayout:SfTextInputLayout>
+            
+            <Label Text="Forgot Password?"
+                   TextColor="White"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="EndAndExpand"
+                   Grid.Row="3"
+                   FontSize="14"
+                   Padding="15">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer>
+                    </TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+            
+            <button:SfButton Text="Log In"
+                             FontSize="18"
+                             BackgroundColor="White"
+                             TextColor="Black"
+                             Grid.Row="4"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             WidthRequest="250"
+                             HeightRequest="50"
+                             CornerRadius="25"/>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="5" HorizontalOptions="Center">
+                <Label Text="Don't have an account?"
+                       TextColor="White"
+                       FontSize="16"/>
+                <Label Text="Sign up"
+                       TextColor="Red"
+                       FontSize="16">
+                </Label>
+            </StackLayout>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
