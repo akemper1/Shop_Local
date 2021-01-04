@@ -5,6 +5,7 @@
         None,
         InvalidUser,
         InvalidCredentials,
+        UserExists,
         Success,
     }
 }

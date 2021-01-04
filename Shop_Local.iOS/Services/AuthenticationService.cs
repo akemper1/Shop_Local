@@ -47,5 +47,24 @@ namespace Shop_Local.iOS.Services
 
             return result;
         }
+
+        public async Task<AuthenticationResult> CreateUserWithEmailAndPassword(string email, string password)
+        {
+            var result = AuthenticationResult.None;
+
+            try
+            {
+                var response = await Auth.DefaultInstance.SignInWithPasswordAsync(email, password);
+                var token    = await response.User.GetIdTokenAsync();
+                result       = AuthenticationResult.Success;
+            }
+
+            catch (Exception)
+            {
+                result = AuthenticationResult.UserExists;
+            }
+
+            return result;
+        }
     }
 }

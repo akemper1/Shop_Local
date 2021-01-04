@@ -10,5 +10,7 @@ namespace Shop_Local.Services.Interfaces
         User GetCurrentUser();
 
         Task<AuthenticationResult> SignInWithEmailAndPassword(string email, string password);
+
+        Task<AuthenticationResult> CreateUserWithEmailAndPassword(string email, string password);
     }
 }

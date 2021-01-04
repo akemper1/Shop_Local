@@ -51,5 +51,24 @@ namespace Shop_Local.Droid.Services
 
             return result;
         }
+
+        public async Task<AuthenticationResult> CreateUserWithEmailAndPassword(string email, string password)
+        {
+            var result = AuthenticationResult.None;
+
+            try
+            {
+                var response = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
+                var token    = await response.User.GetIdToken(false);
+                result       = AuthenticationResult.Success;
+            }
+
+            catch (FirebaseAuthUserCollisionException)
+            {
+                result = AuthenticationResult.UserExists;
+            }
+
+            return result;
+        }
     }
 }
