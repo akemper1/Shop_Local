@@ -52,7 +52,7 @@ namespace Shop_Local.ViewModels
             set
             {
                 SetProperty(ref _password, value);
-                IsPasswordNotValid = InvalidateText(value, new Regex(RegularExpressions.Email));
+                IsPasswordNotValid = InvalidateText(value, new Regex(RegularExpressions.BusinessName));
 
                 // Sets the proper error message based off user input or lack there of.
                 if (string.IsNullOrWhiteSpace(_password))
@@ -78,8 +78,8 @@ namespace Shop_Local.ViewModels
             get { return _confirmedPassword; }
             set
             {
-                SetProperty(ref _password, value);
-                IsConfirmedPasswordNotValid = InvalidateText(value, new Regex(RegularExpressions.Email));
+                SetProperty(ref _confirmedPassword, value);
+                IsConfirmedPasswordNotValid = InvalidateText(value, new Regex(RegularExpressions.BusinessName));
 
                 // Sets the proper error message based off user input or lack there of.
                 if (string.IsNullOrWhiteSpace(_confirmedPassword))
@@ -109,6 +109,13 @@ namespace Shop_Local.ViewModels
 
         #endregion
 
+        #region Popup Properties
+
+        public bool CanShowPopUp { get => _canShowPopUp; set => SetProperty(ref _canShowPopUp, value); }
+        private bool _canShowPopUp;
+
+        #endregion
+
         #endregion
 
         #region Services
@@ -123,6 +130,8 @@ namespace Shop_Local.ViewModels
 
         public ICommand CreateAccount { get; set; }
 
+        public ICommand Close { get; set; }
+
         #endregion
 
         public SignUpViewModel(INavigationService     navigationService,
@@ -134,6 +143,7 @@ namespace Shop_Local.ViewModels
 
             // Commands.
             CreateAccount = new DelegateCommand(async () => await Submit());
+            Close         = new DelegateCommand(ExecuteClosePopup);
         }
 
         #region Methods
@@ -142,9 +152,16 @@ namespace Shop_Local.ViewModels
         {
             var result = await _authenticationService.CreateUserWithEmailAndPassword(Email, Password);
 
+            // We have a successful account creation.
             if (result == AuthenticationResult.Success)
             {
+                // Navigate to the Shops Page since we are authenticated and have an account now.
                 await _navigationService.NavigateAsync("NavigationPage/ShopsPage");
+            }
+            else
+            {
+                // Show popup with error message.
+                CanShowPopUp = true;
             }
         }
 
@@ -152,6 +169,21 @@ namespace Shop_Local.ViewModels
         {
             return ExecuteCreateAccount();
         }
+
+        #region Close Popup
+
+        public void ExecuteClosePopup()
+        {
+            // Entries cleared out so user can re-enter.
+            Email             = string.Empty;
+            Password          = string.Empty;
+            ConfirmedPassword = string.Empty;
+
+            // Reset popup showing.
+            CanShowPopUp      = false;
+        }
+
+        #endregion
 
         #endregion
     }

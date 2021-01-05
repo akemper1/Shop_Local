@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Shop_Local.Views.SignUpPage"
              xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" 
@@ -47,7 +48,8 @@
                                            VerticalOptions="StartAndExpand"
                                            Grid.Row="1">
                 <Entry ReturnType="Next"
-                       Text="{Binding Email}"/>
+                       Text="{Binding Email}"
+                       TextColor="White"/>
             </inputLayout:SfTextInputLayout>
 
             <inputLayout:SfTextInputLayout Hint="Password"
@@ -58,7 +60,8 @@
                                            Grid.Row="2">
                 <Entry IsPassword="True"
                        ReturnType="Next"
-                       Text="{Binding Password}"/>
+                       Text="{Binding Password}"
+                       TextColor="White"/>
             </inputLayout:SfTextInputLayout>
 
             <inputLayout:SfTextInputLayout Hint="Confirm Password"
@@ -69,8 +72,41 @@
                                            Grid.Row="3">
                 <Entry IsPassword="True"
                        ReturnType="Done"
-                       Text="{Binding ConfirmedPassword}"/>
+                       Text="{Binding ConfirmedPassword}"
+                       TextColor="White"/>
             </inputLayout:SfTextInputLayout>
+
+            <popuplayout:SfPopupLayout x:Name="popup" IsOpen="{Binding CanShowPopUp}" ClosePopupOnBackButtonPressed="False" StaysOpen="True">
+                <popuplayout:SfPopupLayout.PopupView>
+                    <popuplayout:PopupView AnimationMode="Zoom" 
+                                           AcceptCommand="{Binding Close}"
+                                           AcceptButtonText="Close"
+                                           ShowCloseButton="False">
+                        <popuplayout:PopupView.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="Something went wrong."
+                                       FontSize="30"
+                                       TextColor="#00AFA0"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontAttributes="Bold"/>
+                            </DataTemplate>
+                        </popuplayout:PopupView.HeaderTemplate>
+                        <popuplayout:PopupView.ContentTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Email, StringFormat='Sorry, but {0}, is already in use. Please use another email address.'}"
+                                       HorizontalTextAlignment="Start"
+                                       Padding="10"
+                                       FontSize="18"/>
+                            </DataTemplate>
+                        </popuplayout:PopupView.ContentTemplate>
+                    </popuplayout:PopupView>
+                </popuplayout:SfPopupLayout.PopupView>
+                <popuplayout:SfPopupLayout.Content>
+                    <StackLayout>
+                    </StackLayout>
+                </popuplayout:SfPopupLayout.Content>
+            </popuplayout:SfPopupLayout>
 
             <button:SfButton Text="Sign Up"
                              Command="{Binding CreateAccount}"

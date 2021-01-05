@@ -177,8 +177,7 @@
 
             <StackLayout VerticalOptions="EndAndExpand">
 
-                <popuplayout:SfPopupLayout x:Name="popup" IsOpen="{Binding CanShowPopUp}" ClosePopupOnBackButtonPressed="False" StaysOpen="True"
-                                           >
+                <popuplayout:SfPopupLayout x:Name="popup" IsOpen="{Binding CanShowPopUp}" ClosePopupOnBackButtonPressed="False" StaysOpen="True">
                     <popuplayout:SfPopupLayout.PopupView>
                         <popuplayout:PopupView AnimationMode="Zoom" 
                                                AcceptCommand="{Binding Close}"
