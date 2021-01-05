@@ -85,7 +85,7 @@ xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusi
                         <popuplayout:PopupView.HeaderTemplate>
                             <DataTemplate>
                                 <Label Text="Something went wrong."
-                                       FontSize="30"
+                                       FontSize="24"
                                        TextColor="#00AFA0"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
