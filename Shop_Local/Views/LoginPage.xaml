@@ -7,18 +7,19 @@
              xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <gradient:SfGradientView Grid.RowSpan="6">
+
+            <gradient:SfGradientView Grid.RowSpan="7">
                 <gradient:SfGradientView.BackgroundBrush>
                     <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <gradient:SfLinearGradientBrush.GradientStops>
@@ -28,7 +29,7 @@
                     </gradient:SfLinearGradientBrush>
                 </gradient:SfGradientView.BackgroundBrush>
             </gradient:SfGradientView>
-            
+
             <inputLayout:SfTextInputLayout Hint="Email"
                                            ContainerType="None"
                                            UnfocusedColor="White"
@@ -37,7 +38,7 @@
                                            Grid.Row="2">
                 <Entry ReturnType="Next"/>
             </inputLayout:SfTextInputLayout>
-            
+
             <inputLayout:SfTextInputLayout Hint="Password"
                                            ContainerType="None"
                                            UnfocusedColor="White"
@@ -47,31 +48,31 @@
                 <Entry IsPassword="True"
                        ReturnType="Done"/>
             </inputLayout:SfTextInputLayout>
-            
+
             <Label Text="Forgot Password?"
                    TextColor="White"
                    HorizontalOptions="EndAndExpand"
-                   VerticalOptions="EndAndExpand"
-                   Grid.Row="3"
+                   VerticalOptions="StartAndExpand"
+                   Grid.Row="4"
                    FontSize="14"
                    Padding="15">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer/>
                 </Label.GestureRecognizers>
             </Label>
-            
+
             <button:SfButton Text="Log In"
                              FontSize="18"
                              BackgroundColor="White"
                              TextColor="Black"
-                             Grid.Row="4"
+                             Grid.Row="5"
                              HorizontalOptions="Center"
                              VerticalOptions="Center"
                              WidthRequest="250"
                              HeightRequest="50"
                              CornerRadius="25"/>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="5" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" Grid.Row="6" HorizontalOptions="Center">
                 <Label Text="Don't have an account?"
                        TextColor="White"
                        FontSize="16"/>
